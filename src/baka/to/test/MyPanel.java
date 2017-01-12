@@ -35,7 +35,7 @@ public class MyPanel extends JPanel
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             JPanel panel = new MyPanel();
             frame.add(panel);
-            JButton button = new JButton();
+            MyButton button = new MyButton();
             button.setBackground(Color.black);
             button.addActionListener(new ActionListener()
             {
@@ -47,9 +47,23 @@ public class MyPanel extends JPanel
                     else button.setBackground(Color.black);
                 }
             });
-//            frame.add(button);
+            frame.setPreferredSize(new Dimension(300, 300));
+            frame.add(button);
             frame.setVisible(true);
             
         });
+    }
+    
+    static class MyButton extends JButton {
+        
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2d = (Graphics2D)g.create();;;;;;;;;;;;
+            AlphaComposite newComposite =
+                    AlphaComposite.getInstance(AlphaComposite.SRC_OVER, .5f);
+            g2d.setComposite(newComposite);
+            super.paintComponent(g2d);
+            g2d.dispose();
+            
+        }
     }
 }

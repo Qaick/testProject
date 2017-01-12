@@ -1,3 +1,4 @@
+import java.lang.management.ManagementFactory;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +7,36 @@ public class Tests
 {
     public static void main(String[] args)
     {
-        testFinallySout();
+        getPhysicalMemory();
     }
     
-    static void testFinallySout() {
+    static void getPhysicalMemory() {
+        try
+        {
+            Runtime.getRuntime().maxMemory();
+            Class operatingSystemMXBean = Class.forName("com.sun.management.OperatingSystemMXBean");
+            Method getRAM = operatingSystemMXBean.getMethod("getTotalPhysicalMemorySize");
+            Object ram = getRAM.invoke(ManagementFactory.getOperatingSystemMXBean());
+            if (ram.getClass().equals(Long.class))
+            {
+                System.out.println(((Long) ram).longValue() / 1048576 + " " + "MB");
+            }
+            else
+                System.out.println("Some error in getting total physical memory.");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    static void nullInForeach() {
+        int[] list = null;
+        for (int a : list) {}
+    }
+
+    static void testFinallySout()
+    {
         System.out.println(testFinally());
     }
 

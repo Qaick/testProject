@@ -8,7 +8,8 @@ public class ForGit
 
     public static void main(String[] args)
     {
-        System.out.println("tere");
+        
+        System.out.println("tereasdf");
         int some=9;
         int done = 9;
     }

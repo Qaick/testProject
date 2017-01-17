@@ -5,4 +5,9 @@ public class ForGit
     static {
         System.out.println(important);
     }
+
+    public static void main(String[] args)
+    {
+        System.out.println("tere");
+    }
 }

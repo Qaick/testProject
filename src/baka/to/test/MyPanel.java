@@ -37,8 +37,8 @@ public class MyPanel extends JPanel
             frame.setLocation(300,300);
             JPanel panel = new MyPanel();
             panel.setSize(200,200);
-            frame.add(panel);
             MyButton button = new MyButton();
+            button.setMinimumSize(new Dimension(200, 200));
             button.setBackground(Color.black);
             button.addActionListener(new ActionListener()
             {
@@ -50,22 +50,28 @@ public class MyPanel extends JPanel
                     else button.setBackground(Color.black);
                 }
             });
-            panel.add(button);
+//            panel.add(button);
+            JPanel checkerboard = new TranslucentButton.Checkerboard();
+            frame.add(panel);
+            checkerboard.add(button);
+            frame.add(checkerboard);
             frame.setVisible(true);
-            
         });
     }
     
     static class MyButton extends JButton {
+        {
+            setOpaque(false);
+        }
         @Override
-//        protected void paintComponent(Graphics g) {
-        public void paint(Graphics g) {
-            Graphics2D g2d = (Graphics2D)g.create();
+        protected void paintComponent(Graphics g) {
+//        public void paint(Graphics g) {
+            Graphics2D g2d = (Graphics2D)g;
+//            super.paint(g2d);
             AlphaComposite newComposite =
                     AlphaComposite.getInstance(AlphaComposite.SRC_OVER, .5f);
-            g2d.setComposite(newComposite);
-//            super.paintComponent(g2d);
-            super.paint(g2d);
+//            g2d.setComposite(newComposite);
+            super.paintComponent(g2d);
             g2d.dispose();
             
         }

@@ -43,7 +43,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import samples.MyUtils;
+import my.utils.MyUtils;
 
 public class BoxLayoutDemo2 implements ItemListener {
     protected static int NUM_COMPONENTS = 3;

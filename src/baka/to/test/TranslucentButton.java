@@ -100,7 +100,7 @@ public class TranslucentButton extends JButton {
         SwingUtilities.invokeLater(doCreateAndShowGUI);
     }
 
-    private static class Checkerboard extends JPanel {
+    public static class Checkerboard extends JPanel {
         private static final int DIVISIONS = 10;
         static final int CHECKER_SIZE = 60;
         public void paintComponent(Graphics g) {

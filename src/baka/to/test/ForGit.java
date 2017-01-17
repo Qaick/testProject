@@ -1,3 +1,5 @@
+package baka.to.test;
+
 public class ForGit
 {
     // from testProject

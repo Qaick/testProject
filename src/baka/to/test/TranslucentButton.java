@@ -104,6 +104,7 @@ public class TranslucentButton extends JButton {
         private static final int DIVISIONS = 10;
         static final int CHECKER_SIZE = 60;
         public void paintComponent(Graphics g) {
+            System.out.println("Checkerboard.paintComponent");
             g.setColor(Color.white);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(Color.BLACK);

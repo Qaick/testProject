@@ -26,10 +26,16 @@ public class MyPersistentDisjointSetUnion
 
     private static int find_set(int v, int i)
     {
+        int c_i = get(i);
+        if (c_i < 0) return i;
+        else return find_set(c_i);
+    }
+
+    private static int get(int i)
+    {
         
     }
-    
-    
+
 
     private static int union_set(int v, int a, int b, int end_number)
     {

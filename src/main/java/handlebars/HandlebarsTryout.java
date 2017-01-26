@@ -12,14 +12,12 @@ public class HandlebarsTryout
     public static void main(String[] args)
     {
         Handlebars handlebars = new Handlebars();
-
-        Template template = null;
+        Context context = Context.newContext("undefined")
+                .data("reportID", "153")
+                .data("date", "12 January 2017");
         try
         {
-            template = handlebars.compile("Response");
-            Context context = Context.newContext("undefined")
-                    .data("reportID", "153")
-                    .data("date", "12 January 2017");
+            Template template = handlebars.compile("Response");
             System.out.println(template.apply(context));
         }
         catch (IOException e)

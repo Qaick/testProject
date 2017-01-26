@@ -86,6 +86,7 @@ public class persistent_array {
                 b = tmp;
             }
             p_array ans = root.set(a, cnt_a + cnt_b);
+            //
             ans = ans.set(b, a);
             return ans;
         } else

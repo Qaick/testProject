@@ -8,7 +8,8 @@ public class persistent_array {
     private static p_array lines[] = new p_array[MAXQ];
     private static int lch[] = new int[MAXS],
             rch[] = new int[MAXS],
-            cnt; // counter
+            cnt, // counter
+            n;
 
     static int new_node(int l, int r) {
         assert (cnt < MAXS);
@@ -18,7 +19,7 @@ public class persistent_array {
     }
 
     static class p_array {
-        int n, root;
+        int root;
 
         int build(int n) {
             if (n == 1)
@@ -27,13 +28,11 @@ public class persistent_array {
             return new_node(build(m), build(n - m));
         }
 
-        p_array(int n) {
-            this.n = n;
+        p_array() {
             root = build(n);
         }
 
-        p_array(int n, int root) {
-            this.n = n;
+        p_array(int root) {
             this.root = root;
         }
 
@@ -63,7 +62,7 @@ public class persistent_array {
 
         // get the resultant array of setting value x to position i.
         p_array set(int i, int x) {
-            return new p_array(n, set(root, n, i, x));
+            return new p_array(set(root, n, i, x));
         }
     }
 
@@ -97,7 +96,7 @@ public class persistent_array {
         long time = System.currentTimeMillis();
         StringBuilder answer = new StringBuilder();
         String line, ss[];
-        int     n, // elements count
+        int      // elements count
                 k, // lines count
                 a, // first element
                 b, // second element
@@ -105,9 +104,9 @@ public class persistent_array {
         try {
             final BufferedReader bufferedReader = new BufferedReader(new FileReader("input.txt"));
             ss = bufferedReader.readLine().split(WhSp);
-            n = Integer.parseInt(ss[0]);
+            n = Integer.parseInt(ss[0])+1;
             k = Integer.parseInt(ss[1]);
-            lines[0] = new p_array(n + 1);
+            lines[0] = new p_array();
             for (int i = 1; i <= k; ++i) {
                 line = bufferedReader.readLine();
                 ss = line.split(WhSp);
@@ -131,5 +130,6 @@ public class persistent_array {
             e.printStackTrace();
         }
         System.out.println("time: " + (System.currentTimeMillis() - time));
+        System.out.println("cnt: " + cnt);
     }
 }

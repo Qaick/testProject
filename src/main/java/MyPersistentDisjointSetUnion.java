@@ -6,7 +6,7 @@ public class MyPersistentDisjointSetUnion
     private final static int MAXQ = 100_005, // p_array roots[] Queries
             MAXS = 10_000_000; // 1e8 limit for elements
 
-    private static int an;
+    private static int an, cc;
     private static int roots[] = new int[MAXQ]; // roots for trees
     private static int lch[] = new int[MAXS], rch[] = new int[MAXS], cnt; // counter
 
@@ -17,97 +17,138 @@ public class MyPersistentDisjointSetUnion
         return cnt++;
     }
 
-    static int build_starting_tree(int n)
+    static int build(int n)
     {
-        if(n == 1) return new_node(-1, -1);
-        int m = n/2;
-        return new_node(build_starting_tree(m), build_starting_tree(n-m));
+        if (n == 1)
+            return new_node(-1, -1);
+        int m = n / 2;
+        return new_node(build(m), build(n - m));
     }
 
-    private static int find_set(int v,int weight, int i)
+    private static int get(int root, int n, int i)
     {
-        int c_i = get(v, an, weight,i);
-        if (c_i < 0) return i;
-        else return find_set(v,c_i,i);
-    }
-
-    private static int set(int v,int n, int weight,int i)
-    {
-        if (weight<0||weight>=n)
-            return v;
-        if (n==1)
-            return new_node(i,i);
-        int m = n/2;
-        if (weight<=m)
-            return get(lch[v],m,weight,i);
+        if (n == 1)
+            return lch[root];// returns value(weight) of vertex
+        int m = n / 2;
+        if (i < m)
+            return get(lch[root], m, i);
         else
-            return get(rch[v],n-m,weight-m,i);
+            return get(rch[root], n - m, i - m);
     }
 
-
-    private static int union_set(int v, int a, int b, int end_number)
+    //v - vertex, n - deep lenght, i - needed vertex, x - value to set
+    private static int set(int v, int n, int i, int x, int copy)
     {
-        int c_a = find_set(v,a, a);
-        int c_b = find_set(v, b, a);
-        //b>a
-        if(a>b){
-            int tmp = a;
-            a= b;
-            b=tmp;
+        //path that I already have from previous tree
+        if (i < 0 || i >= n)
+            return v;
+        //last deep element
+        if (n == 1)
+            return new_node(x, x);
+        int m = n / 2;
+        //recursive building tree to the needed to set vertext
+        if (v > copy)
+            cnt--;
+        int r = rch[v];
+        return new_node(set(lch[v], m, i, x, copy), set(r, n - m, i - m, x, copy));
+    }
+
+    static class Two
+    {
+        int c_i, i;
+
+        Two(int c, int i)
+        {
+            this.c_i = c;
+            this.i = i;
         }
-//        int ver = set(v,c_b, end_number);
-//        return set(ver,c_a, c_b);
-        return 0;
     }
 
-    private static int get(int ver, int a, int end_number, int koef)
+    private static Two find_set(int v, int i)
     {
-//        if (end_number < 0 || end_number >=n)
-//            return end_number;
-//        if (n==1)
-//            return new_node(koef,koef);
-        return 0;
+        int c_i = get(v, an, i);
+        if (c_i < 0)
+            return new Two(c_i, i);
+        return find_set(v, c_i);
     }
 
+    private static int union_set(int v, int a, int b)
+    {
+        //for not repeating get operation after if
+        Two ta = find_set(v, a);
+        Two tb = find_set(v, b);
+        a = ta.i;
+        b = tb.i;
+        if (a != b)
+        {
+            //i>c_i
+            if (ta.c_i > tb.c_i)
+            {
+                int tmp = a;
+                a = b;
+                b = tmp;
+            }
+            int copy = v + 1;// TODO probably better use cnt;
+            int ver = set(v, an, a, ta.c_i + tb.c_i, copy + cc);
+            return set(ver, an, b, a, copy);
+        }
+        else
+        {
+            return v;
+        }
+    }
 
-    public static void main(String... args) {
+    public static void main(String... args)
+    {
         long time = System.currentTimeMillis();
         StringBuilder answer = new StringBuilder();
         String line, ss[];
-//        int     an, // elements count
-         int       k, // roots count
+        int k, // roots count
                 a, // first element
                 b, // second element
                 v; // teporary for Version
-        try {
+        try
+        {
             final BufferedReader bufferedReader = new BufferedReader(new FileReader("input.txt"));
             ss = bufferedReader.readLine().split(WhSp);
-            an = Integer.parseInt(ss[0]);
+            an = Integer.parseInt(ss[0]) + 1;
+            cc = (int) Math.ceil(Math.sqrt(an) + 1);
             k = Integer.parseInt(ss[1]);
-            roots[0] = build_starting_tree(an);
-            for (int i = 1; i <= k; ++i) {
+            roots[0] = build(an);
+            for (int i = 1; i <= k; ++i)
+            {
                 line = bufferedReader.readLine();
                 ss = line.split(WhSp);
                 v = Integer.parseInt(ss[1]);
-                a = Integer.parseInt(ss[2])-1;
-                b = Integer.parseInt(ss[3])-1;
+                a = Integer.parseInt(ss[2]);
+                b = Integer.parseInt(ss[3]);
 
-                if (line.charAt(0) == '+') {
-//                    roots[i] = union_set(roots[v], a, b);
-                } else {
-                    //optimize if -1 there is no same set
-                    int id_b = find_set(roots[v], b, a);
-                    int id_a = find_set(roots[v], a, a);
-                    answer.append((id_a == id_b) ? "YES" : "NO").append('\n');
+                if (line.charAt(0) == '+')
+                {
+                    roots[i] = union_set(roots[v], a, b);
+                }
+                else
+                {
+                    Two id_a = find_set(roots[v], a);
+                    if (id_a.c_i == -1)
+                    {
+                        answer.append("NO\n");
+                        continue;
+                    }
+                    Two id_b = find_set(roots[v], b);
+                    answer.append((id_a.i == id_b.i) ? "YES\n" : "NO\n");
                 }
             }
 
             final BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("output.txt"));
             bufferedWriter.write(answer.toString());
             bufferedWriter.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
         System.out.println("time: " + (System.currentTimeMillis() - time));
+        System.out.println("cnt: " + cnt);
     }
 }

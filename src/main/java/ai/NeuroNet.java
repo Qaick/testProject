@@ -31,6 +31,7 @@ public class NeuroNet {
         if (output/sum < rand.nextDouble()) {
             
         }
+        return 0;
     }
 
 
@@ -49,7 +50,7 @@ public class NeuroNet {
         while (true) {
             observations = game.play(net.next(observations));
             if (game.isDone()) {
-                net.gameOver();
+//                net.gameOver();
                 game = new Game();
                 in.nextLine();
             }

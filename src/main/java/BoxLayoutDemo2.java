@@ -190,8 +190,6 @@ public class BoxLayoutDemo2 implements ItemListener {
         box.add(label);
         box.add(cb);
 
-        contentPane.add(panel, BorderLayout.CENTER);
-        contentPane.add(box, BorderLayout.PAGE_END);
     }
 
     public void itemStateChanged(ItemEvent e) {

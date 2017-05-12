@@ -12,5 +12,7 @@ public class CherryPick {
         System.out.println(a);
         a = a - 500;
         System.out.println(a);
+        a = a - 500;
+        System.out.println(a);
     }
 }

@@ -1,10 +1,12 @@
+package archive_06_06_2017;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class TopLevelContainers {
 
     private static void createAndShowGUI() {
-        JFrame frame = new JFrame("TopLevelContainers");
+        JFrame frame = new JFrame("archive_06_06_2017.TopLevelContainers");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         System.out.println(frame.getLayout());
 

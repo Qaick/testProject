@@ -1,3 +1,5 @@
+package archive_06_06_2017;
+
 /**
  * Checking how work oracle jvm optimization.
  * VMoption: -XX:+PrintCompilation

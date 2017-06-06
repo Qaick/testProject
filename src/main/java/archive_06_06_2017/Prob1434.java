@@ -1,3 +1,5 @@
+package archive_06_06_2017;
+
 import java.util.Scanner;
 
 public class Prob1434 {

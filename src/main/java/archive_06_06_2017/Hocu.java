@@ -1,3 +1,5 @@
+package archive_06_06_2017;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class Hocu {

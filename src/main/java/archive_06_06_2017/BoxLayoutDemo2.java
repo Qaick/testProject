@@ -1,4 +1,4 @@
-/*
+package archive_06_06_2017;/*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@
 
 
 /*
- * BoxLayoutDemo2.java requires one other file:  BLDComponent.java
+ * archive_06_06_2017.BoxLayoutDemo2.java requires one other file:  BLDComponent.java
  */
 
 import java.awt.*;
@@ -215,7 +215,7 @@ public class BoxLayoutDemo2 implements ItemListener {
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("BoxLayoutDemo2");
+        JFrame frame = new JFrame("archive_06_06_2017.BoxLayoutDemo2");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.

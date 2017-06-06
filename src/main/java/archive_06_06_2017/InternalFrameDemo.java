@@ -1,3 +1,5 @@
+package archive_06_06_2017;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
@@ -10,7 +12,7 @@ import java.awt.event.*;
 import java.awt.*;
 
 /*
- * InternalFrameDemo.java requires:
+ * archive_06_06_2017.InternalFrameDemo.java requires:
  *   MyInternalFrame.java
  */
 public class InternalFrameDemo extends JFrame
@@ -38,7 +40,7 @@ public class InternalFrameDemo extends JFrame
     JDesktopPane desktop;
 
     public InternalFrameDemo() {
-        super("InternalFrameDemo");
+        super("archive_06_06_2017.InternalFrameDemo");
 
         //Make the big window be indented 50 pixels from each edge
         //of the screen.

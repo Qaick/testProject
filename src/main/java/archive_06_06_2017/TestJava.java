@@ -1,3 +1,5 @@
+package archive_06_06_2017;
+
 public class TestJava {
     public static void main(String[] args) {
         finalParameters();

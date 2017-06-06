@@ -1,3 +1,5 @@
+package archive_06_06_2017;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;

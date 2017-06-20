@@ -1,4 +1,4 @@
-package archive_06_06_2017;
+package eolymp;
 
 import java.io.*;
 

@@ -1,3 +1,5 @@
+package eolymp;
+
 import java.util.Scanner;
 
 public class Prob5104_TODO {

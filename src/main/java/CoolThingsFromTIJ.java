@@ -1,20 +1,13 @@
-import javafx.beans.WeakInvalidationListener;
-
-import java.io.PipedReader;
-import java.io.PipedWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class CoolThingsFromTIJ {
     public static void main(String[] args) throws Exception {
-        testRTTI();
-
+        testGenerics();
     }
 
     //region Inner Classes
@@ -75,6 +68,7 @@ public class CoolThingsFromTIJ {
     }
     //endregion
 
+    //region Type information
     // Loading(find bytecode, create Class object)
     // Linking(check bytecode, memory for static fields, references)
     // Initializing(initializing superclass, static fields, static blocks)
@@ -96,15 +90,37 @@ public class CoolThingsFromTIJ {
         System.out.println("integer.isInstance(Number.class): "+integer.isInstance(Number.class));
         System.out.println("integer.isAssignableFrom(Number.class): "+Number.class.isAssignableFrom(integer));
 
-
-    }
-
-    static void realRTTI(){
         Method method;
         Field field;
         Constructor constructor;
-
+        // private things can be overrided only after changing modifier
     }
+    //endregion
+
+    //region Generics
+    //Предохранитель - End sentinel
+
+    static class New{
+        static <T,V> Map<T,V> map() {return new HashMap<>();}
+    }
+    static void testGenerics(){
+          setTestClass(New.<Integer, Integer>map()); // not necessary, not compiling if wrong
+    }
+
+    static void setTestClass(Map<Integer, Integer> list){}
+
+
+    static <T> T createInstance(Class<T> type) {
+        try {
+            return type.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //endregion
 
     //region Concurrency
     static void testConcurrency() throws Exception{
@@ -185,5 +201,11 @@ public class CoolThingsFromTIJ {
             System.out.println("still running");
         }
         System.out.println("end...");
+    }
+
+    static class TestClass{
+        TestClass(){
+            System.out.println("TestClass.TestClass");
+        }
     }
 }

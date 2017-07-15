@@ -1,5 +1,5 @@
 package jit.generics;//: generics/InstantiateGenericType.java
-import static net.mindview.util.Print.*;
+import static jit.util.Print.*;
 
 class ClassAsFactory<T> {
   T x;

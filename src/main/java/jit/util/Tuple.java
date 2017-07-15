@@ -1,6 +1,6 @@
 //: net/mindview/util/Tuple.java
 // Tuple library using type argument inference.
-package net.mindview.util;
+package jit.util;
 
 public class Tuple {
   public static <A,B> TwoTuple<A,B> tuple(A a, B b) {

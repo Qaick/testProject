@@ -1,5 +1,5 @@
 package jit.typeinfo;//: typeinfo/SimpleProxyDemo.java
-import static net.mindview.util.Print.*;
+import static jit.util.Print.*;
 
 interface Interface {
   void doSomething();

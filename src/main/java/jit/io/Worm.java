@@ -4,7 +4,7 @@ package jit.io;//: io/Worm.java
 import java.io.*;
 import java.util.Random;
 
-import static net.mindview.util.Print.print;
+import static jit.util.Print.print;
 
 class A implements Serializable {
     A(Data d) {

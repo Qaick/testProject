@@ -1,4 +1,4 @@
-package net.mindview.util;
+package jit.util;
 // Print methods that can be used without
 // qualifiers, using Java SE5 static imports:
 

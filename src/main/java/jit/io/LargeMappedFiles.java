@@ -6,8 +6,8 @@ import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 
-import static net.mindview.util.Print.print;
-import static net.mindview.util.Print.printnb;
+import static jit.util.Print.print;
+import static jit.util.Print.printnb;
 
 public class LargeMappedFiles {
   static int length = 0x8FFFFFF; // 128 MB

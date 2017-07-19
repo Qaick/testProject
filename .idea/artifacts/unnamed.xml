@@ -5,6 +5,7 @@
       <element id="file-copy" path="$PROJECT_DIR$/target/classes/Lol.class" />
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/MAIN-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>

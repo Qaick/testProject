@@ -1,5 +1,7 @@
 package my.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Scanner;
 
 public class MakeBranchName
@@ -8,8 +10,13 @@ public class MakeBranchName
     {
         Scanner in = new Scanner(System.in);
         System.out.println("Line for branch name: ");
-        String name = in.nextLine();
-        name = name.replaceAll(" ", "_");
-        System.out.println(name);
+        String branchName = in.nextLine();
+        String next = in.nextLine();
+        if (next != null) {
+            branchName = branchName + '_' + next;
+        }
+        branchName = StringUtils.remove(branchName, ':');
+        branchName = branchName.replaceAll(" ", "_");
+        System.out.println(branchName);
     }
 }

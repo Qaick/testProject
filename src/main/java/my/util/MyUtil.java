@@ -1,8 +1,8 @@
-package my.utils;
+package my.util;
 
 import java.awt.image.BufferedImage;
 
-public class MyUtils
+public class MyUtil
 {
     /**
      * Converts color image to grayscaled.

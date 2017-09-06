@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package layout;
+package swing.samples;
  
 /*
  * BoxLayoutDemo2.java requires one other file:  BLDComponent.java
@@ -43,7 +43,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import my.utils.MyUtils;
+import my.util.MyUtil;
 
 public class BoxLayoutDemo2 implements ItemListener {
     protected static int NUM_COMPONENTS = 3;
@@ -82,7 +82,7 @@ public class BoxLayoutDemo2 implements ItemListener {
             tmp = ImageIO.read(new File("color.jpg"));
         } catch (IOException e) {
         }
-        tmp = MyUtils.grayScale(tmp);
+        tmp = MyUtil.grayScale(tmp);
         img = tmp;
         JComponent comp;
         panel.add(comp = new JComponent()

@@ -1,0 +1,65 @@
+Rhezo and Safe Network
+Rhezo has just started his own company. His company is doing well, and to continue performing well, he needs to make sure that all computers of his network are connected to each other and if any one computer fails, all other computers are still connected to each other.
+
+It may be possible that two computers are connected to each other via other computers, that is, it may be possible that two computers aren't connected by a direct connection but are connected through other computers.
+
+You need to find whether it is safe to continue or not. It is safe to continue if all computers are connected to each other and failure of any one computer doesn't disconnect any two of the remaining, else it is unsafe to continue.
+
+Input:
+
+First line contains two integers 
+N
+N and 
+M
+M, denoting the number of computers and number of direct connections between any two computers. Next 
+M
+M lines contain 2 integers 
+X
+X and 
+Y
+Y, meaning that there is a direct connection between computer 
+X
+X and computer 
+Y
+Y.
+
+Output:
+
+Print "Safe", if it is safe to continue, else print "Unsafe".
+
+Constraints:
+
+1
+≤
+N
+,
+M
+≤
+10
+5
+1≤N,M≤105
+1
+≤
+X
+,
+Y
+≤
+N
+1≤X,Y≤N
+Sample Input(Plaintext Link)
+3 3
+1 2
+2 3
+1 3
+Sample Output(Plaintext Link)
+Safe
+Explanation
+Removing any computer from the network does not disconnect other computers from each other. Therefore, output is "Safe".
+
+
+
+Time Limit: 1.0 sec(s) for each input file
+Memory Limit: 512 MB
+Source Limit: 1024 KB
+Marking Scheme: Marks are awarded if any testcase passes
+Allowed Languages: C, C++, Clojure, C#, Go, Haskell, Java, JavaScript(Rhino), JavaScript(Node.js), Lisp, Objective-C, Pascal, Perl, PHP, Python, Python 3, R(RScript), Ruby, Rust, Scala

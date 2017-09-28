@@ -1,4 +1,4 @@
-package samples;
+package swing.samples;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -57,7 +57,7 @@ public class CopyAreaPerformance extends JComponent implements KeyListener {
     private static final int SCROLL_SIZE = 100;
     private int viewX = CANVAS_W / 2;
     private int viewY = CANVAS_H / 2;
-    private boolean useCopyArea = false;
+    private boolean useCopyArea = true;
     private boolean useClip = true;
     int prevVX;
     int prevVY;

@@ -10,7 +10,7 @@ public class ForTestsTest {
     
     @Test
     public void method() throws Exception {
-        thrown.expectMessage(startsWith("some Message"));
+        thrown.expectMessage(startsWith("some \"hello\" Message"));
         ForTests.method();
     }
     

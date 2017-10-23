@@ -4,7 +4,7 @@ public class ForTests {
         System.out.println("hello we have problem here");
         if (true) throw new RuntimeException("some \"hello\" Message");
     }
-
+    // test ff from master
     public static void main(String[] args) {
         String s = "String\nsecond\nsecond\nHello\n";
         s = s.replace('\n',' ');

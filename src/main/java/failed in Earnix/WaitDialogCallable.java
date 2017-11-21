@@ -1,34 +1,32 @@
-package com.earnix.eo.gui.util;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
-import static sun.swing.SwingUtilities2.submit;
-
 import com.earnix.eo.client.Msg;
 import com.earnix.eo.client.util.ClientUtils;
 import com.earnix.eo.client.util.EOCallable;
 import com.earnix.eo.dataaccess.ConfigurationExchange;
 import com.earnix.eo.dataaccess.operations.CancelProgressHelperOperation;
-import com.earnix.eo.gui.errorreporting.EOExceptionHandler;
 import com.earnix.eo.gui.common.EOCursorUtils;
 import com.earnix.eo.gui.common.EOPanel;
 import com.earnix.eo.gui.dialog.ConfirmDialog;
 import com.earnix.eo.gui.dialog.EODialog;
+import com.earnix.eo.gui.errorreporting.EOExceptionHandler;
 import com.earnix.eo.gui.taskbar.TaskbarProgressBarBuilder;
 import com.earnix.eo.gui.util.button.DialogButton;
 import com.earnix.eo.gui.util.button.DialogButtonsPanel;
 import com.earnix.eo.gui.util.layout.StackLayout;
 import com.earnix.utils.*;
 import com.earnix.utils.progress.ProgressHelperImpl.ProgressData;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Note: The EORunnable job will be executed in its own thread, so it CANNOT have GUI code inside.

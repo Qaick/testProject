@@ -3,7 +3,7 @@ package eolymp;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-public class Prob116_TODO {
+public class Prob116 {
     static BigInteger c;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -13,7 +13,6 @@ public class Prob116_TODO {
         while (!bi.mod(c).equals(BigInteger.ZERO)) {
             b++;
             bi = bi.multiply(BigInteger.valueOf((int)Math.pow(10, length(b)))).add(BigInteger.valueOf(b));
-            System.out.println(bi.toString());
         }
         System.out.println(b);
     }
